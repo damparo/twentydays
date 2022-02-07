@@ -1,5 +1,13 @@
+.sizing {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
 .jumbotron {
 
     background-color: white;
+    /* text-align: center; */
 
 }
+
