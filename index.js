@@ -1,30 +1,19 @@
-
-
 const list = $("#listhere");
 
+const addTodo = () => {
+  if ($("#todos").val() != "") {
+    let aToDo = $("#todos").val().trim();
+    list.append($("<p>").text(aToDo));
+    $("#todos").val("");
+  }
+};
 
-$("#addbtn").on("click", function(){
+$("#todos").keypress(function (event) {
+  if (event.which == 13) {
+    addTodo();
+  }
+});
 
-if ( $("#todos").val() != "") {
-    
-let aToDo = $("#todos").val().trim();
-
-console.log(aToDo);
-
-let createToDo = $("<p>");
-
-createToDo.text(aToDo);
-
-list.append(createToDo);
-
-$("#todos").val("");
-
-}
-
-
-
-
-
-
-
-})
+$("#addbtn").on("click", function () {
+  addTodo();
+});
