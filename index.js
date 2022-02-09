@@ -1,32 +1,45 @@
 // tag to append list
 const list = $("#listhere");
 
+let arrayOfToDos = [];
+
 // function that creates to dos
 const addToDo = () => {
+
   if ($("#todos").val() != "") {
+    list.empty();
     let aToDo = $("#todos").val().trim();
-    list.append(
-      $("<li>")
-        .css("padding-bottom", "15px")
-        .append(
-          $("<input>").val(aToDo).prop("disabled", true).addClass(aToDo)
-        )
-        .append(
-          $("<button>")
-            .text("update")
-            .addClass("update")
-            .attr("data-update", aToDo)
-        )
-        .append(
-          $("<button>")
-            .text("save")
-            .addClass("save")
-            .addClass("save")
-            .attr("data-save", aToDo)
-        )
-    );
+    arrayOfToDos.push(aToDo);
 
     $("#todos").val("");
+
+    for (i = 0; i < arrayOfToDos.length; i++) {
+      let createLi = arrayOfToDos[i];
+
+      list.append(
+        $("<li>")
+          .css("padding-bottom", "15px")
+          .append(
+            $("<input>").val(createLi).prop("disabled", true).addClass("modify")
+          )
+          .append(
+            $("<button>")
+              .text("update")
+              .addClass("update")
+              .attr("data-update", [i])
+          )
+          .append(
+            $("<button>")
+              .text("save")
+              .addClass("save")
+              .addClass("save")
+              .attr("data-save", [i])
+          )
+      );
+      
+    }
+
+    // $("#todos").val("");
   }
 };
 
@@ -46,17 +59,14 @@ $("#addbtn").on("click", function () {
 $("#listhere").on("click", ".update", function (event) {
   event.preventDefault();
   let updateInput = $(this).attr("data-update");
-  let forClass = '"' + "." + updateInput + '"';
-  console.log(forClass);
+  // let forClass = '"' + "." + updateInput + '"';
+  // console.log(forClass);
 
-
-
-
-//   if ( updateInput)
-//   console.log(updateInput);
-//   let justTheValue = ""+ updateInput + "";
-//   console.log(justTheValue);
-  $(forClass).prop("disabled", false);
+  //   if ( updateInput)
+  //   console.log(updateInput);
+  //   let justTheValue = ""+ updateInput + "";
+  //   console.log(justTheValue);
+  $(".modify").prop("disabled", false);
 });
 
 // $("#listhere").on("click", ".save", function (event) {
