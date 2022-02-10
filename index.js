@@ -3,14 +3,32 @@ const list = $("#listhere");
 
 let arrayOfToDos = [];
 
+
+const runList = ()=>{
+
+  if ($("#todos").val() != "") {
+      
+      let aToDo = $("#todos").val().trim();
+      arrayOfToDos.push(aToDo);
+      $("#todos").val("");
+  
+      addToDo();
+  
+  }
+
+}
+
+runList();
+
 // function that creates to dos
 const addToDo = () => {
-  if ($("#todos").val() != "") {
-    list.empty();
-    let aToDo = $("#todos").val().trim();
-    arrayOfToDos.push(aToDo);
+  list.empty();
+  // if ($("#todos").val() != "") 
+  //   list.empty();
+  //   let aToDo = $("#todos").val().trim();
+  //   arrayOfToDos.push(aToDo);
 
-    $("#todos").val("");
+  //   $("#todos").val("");
 
     for (i = 0; i < arrayOfToDos.length; i++) {
       let createLi = arrayOfToDos[i];
@@ -25,7 +43,7 @@ const addToDo = () => {
               .val(createLi)
               // .prop("disabled", true)
               .addClass("inputchange")
-              .attr("data-update", i)
+              
           )
           .append($("<button>").text("update").addClass("update"))
           .append($("<button>").text("save").addClass("save"))
@@ -35,19 +53,19 @@ const addToDo = () => {
     }
 
     // $("#todos").val("");
-  }
+  
 };
 
 // this function allows the enables the enter key for the input field
 $("#todos").keypress(function (event) {
   if (event.which == 13) {
-    addToDo();
+    runList();
   }
 });
 
 // runs the addToDo function via the add button
 $("#addbtn").on("click", function () {
-  addToDo();
+  runList();
 });
 
 // create button that deletes items
@@ -59,9 +77,10 @@ list.on("click", function (event) {
     // console.log("dennis");
     let index = element.parentElement.getAttribute("data-index");
     console.log(index);
-    console.log(arrayOfToDos);
     arrayOfToDos.splice(index, 1);
-
+    // index.remove();
+    console.log(arrayOfToDos);
+    list.empty();
     addToDo();
   }
 });
