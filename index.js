@@ -35,20 +35,23 @@ const addToDo = () => {
 
       list.append(
         $("<li>")
+          .append(
+            $("<span>").text(createLi).addClass("textdetails")
+          )
           .attr("data-index", i)
           .css("padding-bottom", "15px")
           .addClass("change")
-          .append(
-            $("<input>")
-              .val(createLi)
-              // .prop("disabled", true)
-              .addClass("inputchange")
+          // .append(
+          //   $("<input>")
+          //     .val(createLi)
+          //     // .prop("disabled", true)
+          //     .addClass("inputchange")
               
-          )
-          .append($("<button>").text("update").addClass("update"))
-          .append($("<button>").text("save").addClass("save"))
-          .append($("<button>").text("mark complete").addClass("crossoff"))
-          .append($("<button>").text("delete").addClass("delete"))
+          // )
+          .append($("<button>").text("update").addClass("update samebtn"))
+          .append($("<button>").text("save").addClass("save samebtn"))
+          .append($("<button>").text("mark complete").addClass("crossoff samebtn"))
+          .append($("<button>").text("delete").addClass("delete samebtn"))
       );
     }
 

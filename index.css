@@ -14,4 +14,33 @@
 #listhere {
 
   list-style-type: none;
+  padding: 0;
+}
+
+.liChange{
+
+  width: 60%;
+  border: none;
+
+
+
+}
+
+.samebtn{
+
+background-color: transparent;
+
+
+}
+
+.textdetails{
+
+  font-size: 25px;
+  padding-right: 60px;
+
+}
+
+.change {
+
+  text-size-adjust: 75px;
 }
