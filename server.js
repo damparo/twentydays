@@ -7,6 +7,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use("/public", express.static("public"));
+
 // let's try to serve up the index page
 // app.use('/index.html', express.static('index'));
 
