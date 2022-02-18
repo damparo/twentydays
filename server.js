@@ -17,9 +17,9 @@ app.use(express.json());
 
 // })
 
-app.get("/twentdays", (req, res)=>
+app.get("/twentydays", (req, res)=>
  {
-    res.status(200).res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname, "index.html"));
 
 
   });
