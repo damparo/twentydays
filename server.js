@@ -9,23 +9,22 @@ app.use(express.json());
 
 app.use("/public", express.static("public"));
 
-// let's try to serve up the index page
-// app.use('/index.html', express.static('index'));
 
-// app.get('/twentydays', (req, res)=>{
+// serve main page using this url endpoint
+app.get("/", (req, res)=>
+{
+   res.sendFile(path.join(__dirname, "index.html"));
 
-//     res.status(200).sendFile('index.html', {html: } );
-
-
-// })
-
+ });
+ 
 app.get("/twentydays", (req, res)=>
  {
     res.sendFile(path.join(__dirname, "index.html"));
 
-
   });
 
+ 
+// POST route build
 
 // app.get('/starwars', (req, res)=>{
 
