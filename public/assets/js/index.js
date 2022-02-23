@@ -71,9 +71,28 @@ $("#addbtn").on("click", function () {
   runList();
 });
 
-// create button that deletes items
 
-list.on("click", function (event) {
+
+// list.on("click", function (event) {
+//   let element = event.target;
+
+//   if (element.matches(".save") === true) {
+//     console.log("dennis");
+//     // let index = element.parentElement.getAttribute("data-index");
+    
+//     // console.log(index);
+//     // arrayOfToDos.splice(index, 1);
+//     // // index.remove();
+//     // console.log(arrayOfToDos);
+//     // list.empty();
+//     // addToDo();
+//   }
+// });
+
+// create button that deletes items
+$('.save').on('click', event =>{
+  event.preventDefault();
+  console.log('this is the save btn');
   let element = event.target;
 
   if (element.matches(".delete") === true) {
@@ -86,6 +105,8 @@ list.on("click", function (event) {
     list.empty();
     addToDo();
   }
+
+
 });
 
 // create button that strikethroughs completed todo
