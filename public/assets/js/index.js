@@ -68,7 +68,9 @@ $("#addbtn").on("click", function () {
 });
 
 
-
+// $(".update").on("click", ()=>{
+//   console.log("please work");
+// } );
 // list.on("click", function (event) {
 //   let element = event.target;
 
@@ -86,7 +88,7 @@ $("#addbtn").on("click", function () {
 // });
 
 // create button that deletes items
-$('.save').on('click', event =>{
+$('#listhere').on('click', event =>{
   event.preventDefault();
   console.log('this is the save btn');
   let element = event.target;
