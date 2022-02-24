@@ -1,28 +1,24 @@
 // tag to append list
-const list = $("#listhere");
+const theList = $("#listhere");
 
 let arrayOfToDos = [];
 
-
 const runList = ()=>{
-
   if ($("#todos").val() != "") {
-      
+    
       let aToDo = $("#todos").val().trim();
       arrayOfToDos.push(aToDo);
       $("#todos").val("");
-  
+
       addToDo();
   
-  }
-
-}
+  }}
 
 runList();
 
 // function that creates to dos
 const addToDo = () => {
-  list.empty();
+  theList.empty();
   // if ($("#todos").val() != "") 
   //   list.empty();
   //   let aToDo = $("#todos").val().trim();
@@ -33,7 +29,7 @@ const addToDo = () => {
     for (i = 0; i < arrayOfToDos.length; i++) {
       let createLi = arrayOfToDos[i];
 
-      list.append(
+      theList.append(
         $("<li>")
           .append(
             $("<span>").text(createLi).addClass("textdetails")
@@ -102,7 +98,7 @@ $('.save').on('click', event =>{
     arrayOfToDos.splice(index, 1);
     // index.remove();
     console.log(arrayOfToDos);
-    list.empty();
+    theList.empty();
     addToDo();
   }
 
