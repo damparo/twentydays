@@ -27,7 +27,7 @@ router.get("/twentydays", (req, res)=>
       ["List_items"],
   
       [
-        [req.body.sendNote]
+        req.body.readyForDelivery
       ],
   
       function (res) {

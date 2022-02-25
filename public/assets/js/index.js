@@ -80,6 +80,7 @@ $('#listhere').on('click', event =>{
 
     // grab the element by index and POST it
     let thisNote = JSON.stringify(arrayOfToDos[index]);
+    console.log(thisNote);
 
     const sendNote = {
       readyForDelivery: thisNote
