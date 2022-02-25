@@ -2,7 +2,7 @@ const express = require('express');
 // const path = require('path')
 const router = express.Router();
 
-const todo = require('../models/twentydays');
+const twentyDays = require('../models/twentydays');
 
 
 
@@ -21,6 +21,21 @@ router.get("/twentydays", (req, res)=>
     res.render("index");
 
   });
+
+  router.post("/api/notes", function (req, res) {
+    twentyDays.create(
+      ["List_items"],
+  
+      [
+        [req.body.sendNote]
+      ],
+  
+      function (res) {
+        console.log(res);
+      }
+    );
+  });
+
 
 
 module.exports = router;

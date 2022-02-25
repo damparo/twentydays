@@ -37,9 +37,9 @@ const addToDo = () => {
           .append($("<button>").text("mark complete").addClass("crossoff samebtn"))
           .append($("<button>").text("delete").addClass("delete samebtn"))
       );
+
+
     }
-
-
   
 };
 
@@ -58,23 +58,45 @@ $("#addbtn").on("click", function () {
 // create button that deletes items
 $('#listhere').on('click', event =>{
   event.preventDefault();
-  console.log('this is the save btn');
   let element = event.target;
 
   if (element.matches(".delete") === true) {
-    // console.log("dennis");
     let index = element.parentElement.getAttribute("data-index");
-    console.log(index);
     arrayOfToDos.splice(index, 1);
-    // index.remove();
     console.log(arrayOfToDos);
     theList.empty();
     addToDo();
   }
+});
+
+
+$('#listhere').on('click', event =>{
+  event.preventDefault();
+  let element = event.target;
+
+  if (element.matches(".save") === true) {
+    // console.log("dennis");
+    let index = element.parentElement.getAttribute("data-index");
+
+    // grab the element by index and POST it
+    let thisNote = JSON.stringify(arrayOfToDos[index]);
+
+    const sendNote = {
+      readyForDelivery: thisNote
+    };
+
+    $.ajax("/api/notes", {
+      type: "POST",
+      data: sendNote,
+    }).then(function () {
+      console.log("note saved!");
+    });
+
+  
+  }
 
 
 });
-
 
 
 

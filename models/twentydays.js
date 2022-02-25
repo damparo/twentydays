@@ -3,7 +3,7 @@ const orm = require('../config/orm');
 const twentyDays = {
 
     create:  (cols, vals, cb) => {
-        orm.create("todo", cols, vals, (res) => {
+        orm.create("todos", cols, vals, (res) => {
           cb(res);
         });
       }
