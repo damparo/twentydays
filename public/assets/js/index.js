@@ -3,6 +3,24 @@ const theList = $("#listhere");
 
 let arrayOfToDos = [];
 
+
+// display active notes
+$('.activenotes').on('click', event => {
+  event.preventDefault();
+  $('.currentlist').show();
+  $('.displaysavedlist').hide();
+
+});
+// display saved notes
+$('.savedenotes').on('click', event => {
+  event.preventDefault();
+  $('.currentlist').hide();
+  $('.displaysavedlist').show();
+
+});
+
+
+
 const runList = ()=>{
   if ($("#todos").val() != "") {
     
