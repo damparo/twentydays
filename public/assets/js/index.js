@@ -24,7 +24,7 @@ $(".savednotes").on("click", (event) => {
     console.log(result);
 
     for (let i = 0; i < result.length; i++) {
-      let returnedItems = result[i].List_items;
+      let returnedItems = JSON.parse(result[i].List_items);
       console.log(returnedItems);
       $("#savedlisthere").append(
         $("<li>")
