@@ -44,3 +44,15 @@ background-color: transparent;
 
   text-size-adjust: 75px;
 }
+
+.hidesavedlist {
+
+  display: none;
+
+}
+
+.currentlist {
+
+  display: block;
+
+}

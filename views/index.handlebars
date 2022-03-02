@@ -1,4 +1,4 @@
-{{!-- <!DOCTYPE html>
+{{! <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,43 +9,56 @@
 
     <title>20 days</title>
   </head>
-  <body> --}}
-    <div class="container-md sizing">
-      <div class="row">
-        <div class="col">
-          <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <h1 class="display-2">20 days in France</h1>
-              <p class="lead">
-                Making the most of your time in the land of cheese and wine!
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <h1 class="display-4">Your List</h1>
-          <div class="input-group mb-3">
-            <input 
-            type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
-            id="todos">
-            <button type="button" class="btn btn-light"
-            id="addbtn">add</button>
-          </div>
-          <div>
-            <ul id="listhere">
-
-            </ul>
-          </div>
+  <body> }}
+<div class="container-md sizing">
+  <div class="row">
+    <div class="col">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-2">20 days in France</h1>
+          <p class="lead">
+            Making the most of your time in the land of cheese and wine!
+          </p>
         </div>
       </div>
     </div>
+  </div>
 
+  <div class="row">
+    <div class="col">
+      <h1 class="display-4">Your List</h1>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          id="todos"
+        />
+        <button type="button" class="btn btn-light" id="addbtn">add</button>
+      </div>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-outline-secondary savednotes">saved notes</button>
+     
+        <button type="button" class="btn btn-outline-secondary currentnotes">current</button>
+      </div>
+      <div class="currentlist">
+        <ul id="listhere">
 
+        </ul>
+      </div>
+    </div>
+    <div class="col hidesavedlist">
+      <div>
+        <ul id="savedlisthere">
+          <p>herld</p>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-  {{!-- <script src="/public/assets/js/index.js"></script>
+{{! <script src="/public/assets/js/index.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -62,4 +75,4 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html> --}}
+</html> }}
