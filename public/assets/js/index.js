@@ -62,11 +62,30 @@ $('#listhere').on('click', event =>{
 
   if (element.matches(".delete") === true) {
     let index = element.parentElement.getAttribute("data-index");
+
+    // const deleteNote = index;
+    // console.log(deleteNote);
+
+    // $.ajax("/api/notes" + deleteNote, {
+    //   type: "DELETE",
+    // }).then(function () {
+    //   console.log("note deleted!");
+    // });
+
+
     arrayOfToDos.splice(index, 1);
     console.log(arrayOfToDos);
     theList.empty();
     addToDo();
   }
+
+
+
+
+ 
+
+ 
+
 });
 
 
@@ -95,9 +114,8 @@ $('#listhere').on('click', event =>{
 
   
   }
-
-
 });
+
 
 
 
