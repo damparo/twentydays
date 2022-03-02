@@ -3,50 +3,60 @@ const theList = $("#listhere");
 
 let arrayOfToDos = [];
 
-
 // display active notes
-$('.activenotes').on('click', event => {
+$(".activenotes").on("click", (event) => {
   event.preventDefault();
-  $('.currentlist').show();
-  $('.displaysavedlist').hide();
-
+  $(".currentlist").show();
+  $(".displaysavedlist").hide();
 });
 // display saved notes
-$('.savednotes').on('click', event => {
+$(".savednotes").on("click", (event) => {
   event.preventDefault();
-  $('.currentlist').hide();
-  $('.displaysavedlist').show();
-  console.log('fire in the hole');
+  $(".currentlist").hide();
+  $(".displaysavedlist").show();
+  console.log("fire in the hole");
 
   // GET route will go here
-  
+
   $.ajax("/api/notes", {
     type: "GET",
   }).then(function (result) {
-
-
     console.log(result);
+
+    for (let i = 0; i < result.length; i++) {
+      let returnedItems = result[i].List_items;
+      console.log(returnedItems);
+      $("#savedlisthere").append(
+        $("<li>")
+          .append($("<span>").text(returnedItems).addClass("textdetails"))
+          .attr("data-index", i)
+          .css("padding-bottom", "15px")
+          .addClass("change")
+
+          .append($("<button>").text("update").addClass("update samebtn"))
+          .append($("<button>").text("save").addClass("save samebtn"))
+          .append(
+            $("<button>").text("mark complete").addClass("crossoff samebtn")
+          )
+          .append($("<button>").text("delete").addClass("delete samebtn"))
+      );
+    }
 
     // const firstTeam = JSON.parse(result[0].Team_1);
     // const secondTeam = JSON.parse(result[0].Team_2);
-
-});
-  // 
-
+  });
+  //
 });
 
-
-
-const runList = ()=>{
+const runList = () => {
   if ($("#todos").val() != "") {
-    
-      let aToDo = $("#todos").val().trim();
-      arrayOfToDos.push(aToDo);
-      $("#todos").val("");
+    let aToDo = $("#todos").val().trim();
+    arrayOfToDos.push(aToDo);
+    $("#todos").val("");
 
-      addToDo();
-  
-  }}
+    addToDo();
+  }
+};
 
 runList();
 
@@ -54,27 +64,24 @@ runList();
 const addToDo = () => {
   theList.empty();
 
-    for (i = 0; i < arrayOfToDos.length; i++) {
-      let createLi = arrayOfToDos[i];
+  for (i = 0; i < arrayOfToDos.length; i++) {
+    let createLi = arrayOfToDos[i];
 
-      theList.append(
-        $("<li>")
-          .append(
-            $("<span>").text(createLi).addClass("textdetails")
-          )
-          .attr("data-index", i)
-          .css("padding-bottom", "15px")
-          .addClass("change")
-         
-          .append($("<button>").text("update").addClass("update samebtn"))
-          .append($("<button>").text("save").addClass("save samebtn"))
-          .append($("<button>").text("mark complete").addClass("crossoff samebtn"))
-          .append($("<button>").text("delete").addClass("delete samebtn"))
-      );
+    theList.append(
+      $("<li>")
+        .append($("<span>").text(createLi).addClass("textdetails"))
+        .attr("data-index", i)
+        .css("padding-bottom", "15px")
+        .addClass("change")
 
-
-    }
-  
+        .append($("<button>").text("update").addClass("update samebtn"))
+        .append($("<button>").text("save").addClass("save samebtn"))
+        .append(
+          $("<button>").text("mark complete").addClass("crossoff samebtn")
+        )
+        .append($("<button>").text("delete").addClass("delete samebtn"))
+    );
+  }
 };
 
 // this function allows the enables the enter key for the input field
@@ -90,7 +97,7 @@ $("#addbtn").on("click", function () {
 });
 
 // create button that deletes items
-$('#listhere').on('click', event =>{
+$("#listhere").on("click", (event) => {
   event.preventDefault();
   let element = event.target;
 
@@ -106,24 +113,14 @@ $('#listhere').on('click', event =>{
     //   console.log("note deleted!");
     // });
 
-
     arrayOfToDos.splice(index, 1);
     console.log(arrayOfToDos);
     theList.empty();
     addToDo();
   }
-
-
-
-
- 
-
- 
-
 });
 
-
-$('#listhere').on('click', event =>{
+$("#listhere").on("click", (event) => {
   event.preventDefault();
   let element = event.target;
 
@@ -136,7 +133,7 @@ $('#listhere').on('click', event =>{
     console.log(thisNote);
 
     const sendNote = {
-      readyForDelivery: thisNote
+      readyForDelivery: thisNote,
     };
 
     $.ajax("/api/notes", {
@@ -145,16 +142,5 @@ $('#listhere').on('click', event =>{
     }).then(function () {
       console.log("note saved!");
     });
-
-  
   }
 });
-
-
-
-
-
-
-
-
-
