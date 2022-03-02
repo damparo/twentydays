@@ -16,6 +16,22 @@ $('.savednotes').on('click', event => {
   event.preventDefault();
   $('.currentlist').hide();
   $('.displaysavedlist').show();
+  console.log('fire in the hole');
+
+  // GET route will go here
+  
+  $.ajax("/api/notes", {
+    type: "GET",
+  }).then(function (result) {
+
+
+    console.log(result);
+
+    // const firstTeam = JSON.parse(result[0].Team_1);
+    // const secondTeam = JSON.parse(result[0].Team_2);
+
+});
+  // 
 
 });
 

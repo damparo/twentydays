@@ -36,6 +36,16 @@ router.get("/twentydays", (req, res)=>
     );
   });
 
+  router.get("/api/notes", function (req, res) {
+    twentyDays.recieve(
+      // ["todos"],
+  
+      function (result) {
+        res.json(result)
+      }
+    );
+  });
+
 
 
 module.exports = router;
