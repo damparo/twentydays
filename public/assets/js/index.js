@@ -12,7 +12,7 @@ $('.activenotes').on('click', event => {
 
 });
 // display saved notes
-$('.savedenotes').on('click', event => {
+$('.savednotes').on('click', event => {
   event.preventDefault();
   $('.currentlist').hide();
   $('.displaysavedlist').show();
