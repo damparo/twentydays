@@ -34,21 +34,50 @@ $(".savednotes").on("click", (event) => {
           .attr("data-index", i)
           .css("padding-bottom", "15px")
           .addClass("change")
-
           .append($("<button>").text("update").addClass("update samebtn"))
-          .append($("<button>").text("save").addClass("save samebtn"))
+          // .append($("<button>").text("save").addClass("save samebtn"))
           .append(
             $("<button>").text("mark complete").addClass("crossoff samebtn")
           )
-          .append($("<button>").text("delete").addClass("delete samebtn"))
+          .append($("<button>").text("delete").addClass("actualdelete samebtn"))
       );
     }
 
-    // const firstTeam = JSON.parse(result[0].Team_1);
-    // const secondTeam = JSON.parse(result[0].Team_2);
   });
   //
 });
+
+
+// DELETE route for saved notes
+$("#savedlisthere").on("click", (event) => {
+  event.preventDefault();
+
+  let element = event.target;
+
+  if (element.matches(".actualdelete") === true) {
+
+      console.log("this will delete the item");
+
+    // let index = element.parentElement.getAttribute("data-index");
+    // const deleteNote = index;
+    // console.log(deleteNote);
+    // $.ajax("/api/notes" + deleteNote, {
+    //   type: "DELETE",
+    // }).then(function () {
+    //   console.log("note deleted!");
+    // });
+
+    // arrayOfToDos.splice(index, 1);
+    // console.log(arrayOfToDos);
+    // theList.empty();
+    // addToDo();
+  }
+});
+
+
+
+
+
 
 const runList = () => {
   if ($("#todos").val() != "") {
@@ -98,7 +127,7 @@ $("#addbtn").on("click", function () {
   runList();
 });
 
-// create button that deletes items
+// create button that deletes items from active list
 $("#listhere").on("click", (event) => {
   event.preventDefault();
   let element = event.target;
