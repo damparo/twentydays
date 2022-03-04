@@ -16,6 +16,8 @@ $(".savednotes").on("click", (event) => {
   $(".displaysavedlist").show();
   console.log("fire in the hole");
 
+  $("#savedlisthere").empty();
+
   // GET route will go here
 
   $.ajax("/api/notes", {
@@ -74,11 +76,11 @@ const addToDo = () => {
         .css("padding-bottom", "15px")
         .addClass("change")
 
-        .append($("<button>").text("update").addClass("update samebtn"))
+        // .append($("<button>").text("update").addClass("update samebtn"))
         .append($("<button>").text("save").addClass("save samebtn"))
-        .append(
-          $("<button>").text("mark complete").addClass("crossoff samebtn")
-        )
+        // .append(
+        //   $("<button>").text("mark complete").addClass("crossoff samebtn")
+        // )
         .append($("<button>").text("delete").addClass("delete samebtn"))
     );
   }
