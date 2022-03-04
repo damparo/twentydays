@@ -11,6 +11,14 @@ const twentyDays = {
       cb(res);
     });
   },
+
+  delete: (vals, cb) =>{
+    orm.delete(vals, cb, (res)=>{
+      cb(res);
+    });
+  }
+
+
 };
 
 // Export the database function to the controller

@@ -1,3 +1,4 @@
+const { query } = require("express");
 const connection = require("../config/connection");
 
 printQuestionMarks = (num) => {
@@ -60,6 +61,35 @@ const orm = {
       cb(result);
     });
   },
+
+  delete: (vals, cb) => {
+
+    const desiredRow = vals.toString();
+
+    let queryString = "DELETE from todos where id = ";
+
+    queryString += "?";
+
+    console.log(queryString);
+
+    connection.query(queryString, desiredRow,(err, result) => {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+      console.log(result);
+    });
+
+
+
+
+
+
+  }
+
+
+
 };
 
 // export the orm object for the model

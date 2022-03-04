@@ -58,14 +58,14 @@ $("#savedlisthere").on("click", (event) => {
 
       console.log("this will delete the item");
 
-    // let index = element.parentElement.getAttribute("data-index");
-    // const deleteNote = index;
-    // console.log(deleteNote);
-    // $.ajax("/api/notes" + deleteNote, {
-    //   type: "DELETE",
-    // }).then(function () {
-    //   console.log("note deleted!");
-    // });
+    let index = element.parentElement.getAttribute("data-index");
+    const deleteNote = index;
+    console.log(deleteNote);
+    $.ajax("/api/notes/" + deleteNote, {
+      type: "DELETE",
+    }).then(function () {
+      console.log("note deleted!");
+    });
 
     // arrayOfToDos.splice(index, 1);
     // console.log(arrayOfToDos);

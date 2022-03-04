@@ -46,6 +46,24 @@ router.get("/twentydays", (req, res)=>
     );
   });
 
+  router.delete("/api/notes/:deleteNote", function(req, res){
+
+    const deleteThisNote = req.params.deleteNote;
+
+    twentyDays.delete(
+      deleteThisNote,
+      function(result){
+
+        console.log(result);
+
+      }
+    );
+
+
+
+
+  })
+
 
 
 module.exports = router;
