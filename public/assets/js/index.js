@@ -60,6 +60,7 @@ $("#savedlisthere").on("click", (event) => {
 
     let index = element.parentElement.getAttribute("data-index");
     const deleteNote = index;
+    
     console.log(deleteNote);
     $.ajax("/api/notes/" + deleteNote, {
       type: "DELETE",
