@@ -2,6 +2,7 @@
 const theList = $("#listhere");
 
 let arrayOfToDos = [];
+let returnedItems = [];
 
 // display active notes
 $(".activenotes").on("click", (event) => {
@@ -11,26 +12,26 @@ $(".activenotes").on("click", (event) => {
 });
 // display saved notes
 $(".savednotes").on("click", (event) => {
+  
   event.preventDefault();
   $(".currentlist").hide();
   $(".displaysavedlist").show();
   console.log("fire in the hole");
 
-  $("#savedlisthere").empty();
-
   // GET route will go here
-
   $.ajax("/api/notes", {
     type: "GET",
   }).then(function (result) {
+  
+    $("#savedlisthere").empty();
     console.log(result);
-
     for (let i = 0; i < result.length; i++) {
-      let returnedItems = JSON.parse(result[i].List_items);
-      console.log(returnedItems);
+      let resultItems =  JSON.parse(result[i].List_items);
+      returnedItems.push(resultItems);
+
       $("#savedlisthere").append(
         $("<li>")
-          .append($("<span>").text(returnedItems).addClass("textdetails"))
+          .append($("<span>").text(resultItems).addClass("textdetails"))
           .attr("data-index", i)
           .css("padding-bottom", "15px")
           .addClass("change")
@@ -41,12 +42,16 @@ $(".savednotes").on("click", (event) => {
           )
           .append($("<button>").text("delete").addClass("actualdelete samebtn"))
       );
-    }
 
+    }
+    console.log(returnedItems);
+   
+      
+    
+    
   });
   //
 });
-
 
 // DELETE route for saved notes
 $("#savedlisthere").on("click", (event) => {
@@ -55,18 +60,22 @@ $("#savedlisthere").on("click", (event) => {
   let element = event.target;
 
   if (element.matches(".actualdelete") === true) {
+    console.log(returnedItems);
 
-      console.log("this will delete the item");
+    // if (element.matches('.textdetails') ===  true){
 
-    let index = element.parentElement.getAttribute("data-index");
-    const deleteNote = index;
-    
-    console.log(deleteNote);
-    $.ajax("/api/notes/" + deleteNote, {
-      type: "DELETE",
-    }).then(function () {
-      console.log("note deleted!");
-    });
+    //   let neet = $('.textdetails').html();
+    //   console.log(neet);
+
+    // }
+    // let index = element.parentElement.getAttribute("data-index");
+    // const deleteNote = index;
+    // console.log(deleteNote);
+    // $.ajax("/api/notes/" + deleteNote, {
+    //   type: "DELETE",
+    // }).then(function () {
+    //   console.log("note deleted!");
+    // });
 
     // arrayOfToDos.splice(index, 1);
     // console.log(arrayOfToDos);
@@ -74,11 +83,6 @@ $("#savedlisthere").on("click", (event) => {
     // addToDo();
   }
 });
-
-
-
-
-
 
 const runList = () => {
   if ($("#todos").val() != "") {
