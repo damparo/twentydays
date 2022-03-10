@@ -18,12 +18,13 @@ $(".savednotes").on("click", (event) => {
   $(".displaysavedlist").show();
   console.log("fire in the hole");
 
+  
   // GET route will go here
   $.ajax("/api/notes", {
     type: "GET",
   }).then(function (result) {
   
-    $("#savedlisthere").empty();
+  $("#savedlisthere").empty();
     console.log(result);
     for (let i = 0; i < result.length; i++) {
       let resultItems =  JSON.parse(result[i].List_items);
@@ -44,13 +45,11 @@ $(".savednotes").on("click", (event) => {
       );
 
     }
-    console.log(returnedItems);
-   
-      
-    
+  
     
   });
-  //
+
+ 
 });
 
 // DELETE route for saved notes
@@ -65,13 +64,16 @@ $("#savedlisthere").on("click", (event) => {
     let index = element.parentElement.getAttribute("data-index");
     const deleteNote = JSON.stringify(returnedItems[index]);
 
+    
+
     $.ajax("/api/notes/" + deleteNote, {
       type: "DELETE",
     }).then(function () {
       console.log("note deleted!");
     });
 
-    // arrayOfToDos.splice(index, 1);
+    
+    // returnedItems.splice(index, 1);
     // console.log(arrayOfToDos);
     // theList.empty();
     // addToDo();
