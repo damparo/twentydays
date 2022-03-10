@@ -72,8 +72,31 @@ $("#savedlisthere").on("click", (event) => {
       console.log("note deleted!");
     });
 
+    console.log(returnedItems);
     
-    // returnedItems.splice(index, 1);
+    returnedItems.splice(index, 1);
+    console.log(returnedItems);
+
+    $("#savedlisthere").empty();
+    // console.log(result);
+    for (let i = 0; i < returnedItems.length; i++) {
+      let refreshSaved = returnedItems[i];
+
+      $("#savedlisthere").append(
+        $("<li>")
+          .append($("<span>").text(refreshSaved).addClass("textdetails"))
+          .attr("data-index", i)
+          .css("padding-bottom", "15px")
+          .addClass("change")
+          .append($("<button>").text("update").addClass("update samebtn"))
+          // .append($("<button>").text("save").addClass("save samebtn"))
+          .append(
+            $("<button>").text("mark complete").addClass("crossoff samebtn")
+          )
+          .append($("<button>").text("delete").addClass("actualdelete samebtn"))
+      );
+
+    }
     // console.log(arrayOfToDos);
     // theList.empty();
     // addToDo();
