@@ -66,10 +66,10 @@ const orm = {
 
     const desiredRow = vals.toString();
 
-    let queryString = "DELETE from todos where id = ";
+    let queryString = "DELETE FROM todos WHERE List_items = ";
 
     queryString += "?";
-
+   
     console.log(queryString);
 
     connection.query(queryString, desiredRow,(err, result) => {

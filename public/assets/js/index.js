@@ -60,22 +60,16 @@ $("#savedlisthere").on("click", (event) => {
   let element = event.target;
 
   if (element.matches(".actualdelete") === true) {
-    console.log(returnedItems);
+   
+  
+    let index = element.parentElement.getAttribute("data-index");
+    const deleteNote = JSON.stringify(returnedItems[index]);
 
-    // if (element.matches('.textdetails') ===  true){
-
-    //   let neet = $('.textdetails').html();
-    //   console.log(neet);
-
-    // }
-    // let index = element.parentElement.getAttribute("data-index");
-    // const deleteNote = index;
-    // console.log(deleteNote);
-    // $.ajax("/api/notes/" + deleteNote, {
-    //   type: "DELETE",
-    // }).then(function () {
-    //   console.log("note deleted!");
-    // });
+    $.ajax("/api/notes/" + deleteNote, {
+      type: "DELETE",
+    }).then(function () {
+      console.log("note deleted!");
+    });
 
     // arrayOfToDos.splice(index, 1);
     // console.log(arrayOfToDos);
