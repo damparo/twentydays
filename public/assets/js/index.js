@@ -12,27 +12,26 @@ $(".activenotes").on("click", (event) => {
 });
 // display saved notes
 $(".savednotes").on("click", (event) => {
-  
   event.preventDefault();
   $(".currentlist").hide();
   $(".displaysavedlist").show();
   console.log("fire in the hole");
+  $("#savedlisthere").empty();
 
-  
   // GET route will go here
   $.ajax("/api/notes", {
     type: "GET",
   }).then(function (result) {
-  
-  $("#savedlisthere").empty();
-    console.log(result);
-    for (let i = 0; i < result.length; i++) {
-      let resultItems =  JSON.parse(result[i].List_items);
+    for (i = 0; i < result.length; i++) {
+      let resultItems = JSON.parse(result[i].List_items);
       returnedItems.push(resultItems);
+    }
 
+    console.log(returnedItems);
+    for (i = 0; i < returnedItems.length; i++) {
       $("#savedlisthere").append(
         $("<li>")
-          .append($("<span>").text(resultItems).addClass("textdetails"))
+          .append($("<span>").text(returnedItems[i]).addClass("textdetails"))
           .attr("data-index", i)
           .css("padding-bottom", "15px")
           .addClass("change")
@@ -43,13 +42,49 @@ $(".savednotes").on("click", (event) => {
           )
           .append($("<button>").text("delete").addClass("actualdelete samebtn"))
       );
-
     }
-  
-    
+
+    returnedItems = [];
+    // $("#savedlisthere").empty();
+    //   console.log(result);
+    // for (let i = 0; i < result.length; i++) {
+    //   let resultItems =  JSON.parse(result[i].List_items);
+    //   returnedItems.push(resultItems);
+
+    //   $("#savedlisthere").append(
+    //     $("<li>")
+    //       .append($("<span>").text(resultItems).addClass("textdetails"))
+    //       .attr("data-index", i)
+    //       .css("padding-bottom", "15px")
+    //       .addClass("change")
+    //       .append($("<button>").text("update").addClass("update samebtn"))
+    //       // .append($("<button>").text("save").addClass("save samebtn"))
+    //       .append(
+    //         $("<button>").text("mark complete").addClass("crossoff samebtn")
+    //       )
+    //       .append($("<button>").text("delete").addClass("actualdelete samebtn"))
+    //   );
+
+    // }
   });
 
- 
+  // $("#savedlisthere").empty();
+  // for ( i = 0; i < returnedItems.length; i++){
+  //   $("#savedlisthere").append(
+  //         $("<li>")
+  //           .append($("<span>").text(returnedItems[i]).addClass("textdetails"))
+  //           .attr("data-index", i)
+  //           .css("padding-bottom", "15px")
+  //           .addClass("change")
+  //           .append($("<button>").text("update").addClass("update samebtn"))
+  //           // .append($("<button>").text("save").addClass("save samebtn"))
+  //           .append(
+  //             $("<button>").text("mark complete").addClass("crossoff samebtn")
+  //           )
+  //           .append($("<button>").text("delete").addClass("actualdelete samebtn"))
+  //       );
+
+  // }
 });
 
 // DELETE route for saved notes
@@ -59,47 +94,32 @@ $("#savedlisthere").on("click", (event) => {
   let element = event.target;
 
   if (element.matches(".actualdelete") === true) {
-   
-  
     let index = element.parentElement.getAttribute("data-index");
     const deleteNote = JSON.stringify(returnedItems[index]);
-
-    
-
     $.ajax("/api/notes/" + deleteNote, {
       type: "DELETE",
     }).then(function () {
       console.log("note deleted!");
     });
-
-    console.log(returnedItems);
-    
     returnedItems.splice(index, 1);
-    console.log(returnedItems);
-
     $("#savedlisthere").empty();
-    // console.log(result);
-    for (let i = 0; i < returnedItems.length; i++) {
-      let refreshSaved = returnedItems[i];
 
-      $("#savedlisthere").append(
-        $("<li>")
-          .append($("<span>").text(refreshSaved).addClass("textdetails"))
-          .attr("data-index", i)
-          .css("padding-bottom", "15px")
-          .addClass("change")
-          .append($("<button>").text("update").addClass("update samebtn"))
-          // .append($("<button>").text("save").addClass("save samebtn"))
-          .append(
-            $("<button>").text("mark complete").addClass("crossoff samebtn")
-          )
-          .append($("<button>").text("delete").addClass("actualdelete samebtn"))
-      );
-
-    }
-    // console.log(arrayOfToDos);
-    // theList.empty();
-    // addToDo();
+    // for (let i = 0; i < returnedItems.length; i++) {
+    //   let refreshSaved = returnedItems[i];
+    //   $("#savedlisthere").append(
+    //     $("<li>")
+    //       .append($("<span>").text(refreshSaved).addClass("textdetails"))
+    //       .attr("data-index", i)
+    //       .css("padding-bottom", "15px")
+    //       .addClass("change")
+    //       .append($("<button>").text("update").addClass("update samebtn"))
+    //       // .append($("<button>").text("save").addClass("save samebtn"))
+    //       .append(
+    //         $("<button>").text("mark complete").addClass("crossoff samebtn")
+    //       )
+    //       .append($("<button>").text("delete").addClass("actualdelete samebtn"))
+    //   );
+    // }
   }
 });
 
