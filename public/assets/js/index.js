@@ -107,12 +107,7 @@ const addToDo = () => {
         .attr("data-index", i)
         .css("padding-bottom", "15px")
         .addClass("change")
-
-        // .append($("<button>").text("update").addClass("update samebtn"))
         .append($("<button>").text("save").addClass("save samebtn"))
-        // .append(
-        //   $("<button>").text("mark complete").addClass("crossoff samebtn")
-        // )
         .append($("<button>").text("delete").addClass("delete samebtn"))
     );
   }
@@ -137,16 +132,6 @@ $("#listhere").on("click", (event) => {
 
   if (element.matches(".delete") === true) {
     let index = element.parentElement.getAttribute("data-index");
-
-    // const deleteNote = index;
-    // console.log(deleteNote);
-
-    // $.ajax("/api/notes" + deleteNote, {
-    //   type: "DELETE",
-    // }).then(function () {
-    //   console.log("note deleted!");
-    // });
-
     arrayOfToDos.splice(index, 1);
     console.log(arrayOfToDos);
     theList.empty();
@@ -159,7 +144,6 @@ $("#listhere").on("click", (event) => {
   let element = event.target;
 
   if (element.matches(".save") === true) {
-    // console.log("dennis");
     let index = element.parentElement.getAttribute("data-index");
 
     // grab the element by index and POST it
