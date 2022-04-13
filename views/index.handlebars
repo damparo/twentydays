@@ -15,7 +15,7 @@
       </div>
 
       <div class="row inputbar">
-        <h1 class="display-6">your adventure list</h1>
+        <h1 class="display-6 adventurelist">your adventure list</h1>
 
         <div class="col-sm-4 offset-sm-4">
           <div class="input-group mb-3">
@@ -35,32 +35,40 @@
 
       <div class="row">
         <div class="col">
+          <div class="row">
+            <div class="col-sm-4 offset-sm-4">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary activenotes"
+                >active notes</button>
 
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button
-              type="button"
-              class="btn btn-outline-secondary activenotes"
-            >active notes</button>
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary savednotes"
+                >saved notes</button>
+              </div>
 
-            <button
-              type="button"
-              class="btn btn-outline-secondary savednotes"
-            >saved notes</button>
+            </div>
+
           </div>
           {{! active notes }}
-          <div class="currentlist">
+          
+          <div class="row currentlist">
             <ul id="listhere">
 
             </ul>
           </div>
+
           {{! saved notes }}
-          <div class="displaysavedlist">
+          <div class="row displaysavedlist">
 
             <ul id="savedlisthere">
               <p>herld</p>
             </ul>
 
           </div>
+
         </div>
       </div>
 
