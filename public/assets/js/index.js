@@ -99,12 +99,15 @@ const addToDo = () => {
 
     theList.append(
       $("<li>")
+        .append($("<div>").addClass("row")
+        .append($("<div>").addClass("col")
         .append($("<span>").text(createLi).addClass("textdetails"))
         .attr("data-index", i)
         .css("padding-bottom", "15px")
-        .addClass("change")
+        .addClass("change"))
+        .append($("<div>").addClass("col")
         .append($("<button>").text("save").addClass("save samebtn"))
-        .append($("<button>").text("delete").addClass("delete samebtn"))
+        .append($("<button>").text("delete").addClass("delete samebtn"))))
     );
   }
 };
