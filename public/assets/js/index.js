@@ -106,8 +106,8 @@ const addToDo = () => {
         .css("padding-bottom", "15px")
         .addClass("change"))
         .append($("<div>").addClass("col")
-        .append($("<button>").text("save").addClass("btn btn-outline-secondary save samebtn"))
-        .append($("<button>").text("delete").addClass("btn btn-outline-secondary delete samebtn"))))
+        .append($("<button>").text("save").addClass("btn btn-outline-secondary btn-sm save samebtn"))
+        .append($("<button>").text("delete").addClass("btn btn-outline-secondary btn-sm delete samebtn"))))
     );
   }
 };

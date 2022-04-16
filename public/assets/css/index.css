@@ -50,7 +50,7 @@ background-color: transparent;
 
 .textdetails{
 
-  font-size: 25px;
+  font-size: 16px;
   padding-right: 60px;
 
 }
@@ -69,5 +69,6 @@ background-color: transparent;
 .currentlist {
 
   display: block;
+  margin-top: 20px;
 
 }
