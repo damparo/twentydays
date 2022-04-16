@@ -98,16 +98,15 @@ const addToDo = () => {
     let createLi = arrayOfToDos[i];
 
     theList.append(
-      $("<li>")
-        .append($("<div>").addClass("row")
-        .append($("<div>").addClass("col")
-        .append($("<span>").text(createLi).addClass("textdetails"))
+      $("<li>").addClass("row")
+        
+        .append($("<span>").text(createLi).addClass("col textdetails"))
         .attr("data-index", i)
         .css("padding-bottom", "15px")
-        .addClass("change"))
+        .addClass("change")
         .append($("<div>").addClass("col")
         .append($("<button>").text("save").addClass("btn btn-outline-secondary btn-sm save samebtn"))
-        .append($("<button>").text("delete").addClass("btn btn-outline-secondary btn-sm delete samebtn"))))
+        .append($("<button>").text("delete").addClass("btn btn-outline-secondary btn-sm delete samebtn")))
     );
   }
 };
