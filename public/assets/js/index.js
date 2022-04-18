@@ -31,14 +31,15 @@ $(".savednotes").on("click", (event) => {
     console.log(returnedItems);
     for (i = 0; i < returnedItems.length; i++) {
       $("#savedlisthere").append(
-        $("<li>")
-          .append($("<span>").text(returnedItems[i]).addClass("textdetails"))
+        $("<li>").addClass("row")
+          .append($("<span>").text(returnedItems[i]).addClass("col-8 col-lg-7 offset-lg-1 textdetails"))
           .attr("data-index", i)
           .css("padding-bottom", "15px")
           .addClass("change")
-          .append($("<button>").text("update").addClass("update samebtn"))
-          .append($("<button>").text("delete").addClass("actualdelete samebtn"))
-      );
+          .append($("<div>").addClass("col-4 col-lg-3")
+          .append($("<button>").text("update").addClass("btn btn-outline-secondary btn-sm update samebtn"))
+          .append($("<button>").text("delete").addClass("btn btn-outline-secondary btn-sm actualdelete samebtn"))
+      ));
     } 
   });
  
@@ -62,18 +63,19 @@ $("#savedlisthere").on("click", (event) => {
 
     for (let i = 0; i < returnedItems.length; i++) {
       $("#savedlisthere").append(
-        $("<li>")
-          .append($("<span>").text(returnedItems[i]).addClass("textdetails"))
+        $("<li>").addClass("row")
+          .append($("<span>").text(returnedItems[i]).addClass("col-8 col-lg-7 offset-lg-1 textdetails"))
           .attr("data-index", i)
           .css("padding-bottom", "15px")
           .addClass("change")
-          .append($("<button>").text("update").addClass("update samebtn"))
+          .append($("<div>").addClass("col-4 col-lg-3")
+          .append($("<button>").text("update").addClass("btn btn-outline-secondary btn-sm update samebtn"))
           // .append($("<button>").text("save").addClass("save samebtn"))
           .append(
-            $("<button>").text("mark complete").addClass("crossoff samebtn")
+            $("<button>").text("mark complete").addClass("btn btn-outline-secondary btn-sm crossoff samebtn")
           )
-          .append($("<button>").text("delete").addClass("actualdelete samebtn"))
-      );
+          .append($("<button>").text("delete").addClass("btn btn-outline-secondary btn-sm actualdelete samebtn"))
+      ));
     }
   }
 });
@@ -100,7 +102,7 @@ const addToDo = () => {
     theList.append(
       $("<li>").addClass("row")
         
-        .append($("<span>").text(createLi).addClass("col-8 col-lg-7 offset-lg-1 textdetails textdetails"))
+        .append($("<span>").text(createLi).addClass("col-8 col-lg-7 offset-lg-1 textdetails"))
         .attr("data-index", i)
         .css("padding-bottom", "15px")
         .addClass("change")
